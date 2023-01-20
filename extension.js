@@ -17,11 +17,39 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('sheller.helloWorld', function () {
+	let disposable = vscode.commands.registerCommand('sheller.run', function () {
 		// The code you place here will be executed every time your command is executed
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from sheller!');
+		lines = 'Hello World from sheller!'
+		var editor = vscode.window.activeTextEditor;
+			if (!editor) {
+				return; // No open text editor
+		}
+
+		var selection = editor.selection;
+		var lines = ""
+		
+		if(selection.isEmpty){
+			// TODO: select entire lines in range of current line
+			lines = editor.document.lineAt(editor.selection.active.line).text.trim() + "\n";
+			
+
+			// var firstLine = editor.document.lineAt(0);
+			// var lastLine = editor.document.lineAt(editor.document.lineCount - 1);
+			// var textRange = new vscode.Range(firstLine.range.start, lastLine.range.end);
+
+			// let invalidRange = new Range(0, 0, textDocument.lineCount /*intentionally missing the '-1' */, 0);
+			// let fullRange = textDocument.validateRange(invalidRange);
+			// editor.edit(edit => edit.replace(fullRange, newText));
+			
+		}else{
+			lines = editor.document.getText(selection).trim()+"\n";
+			// TODO: select entire lines in range of selection
+		}
+		if(lines!==""){
+			vscode.window.activeTerminal.sendText(lines)
+		}
+		vscode.window.showInformationMessage('lines: `'+lines+'`');
 	});
 
 	context.subscriptions.push(disposable);

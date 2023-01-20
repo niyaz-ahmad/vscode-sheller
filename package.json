@@ -10,13 +10,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:sheller.helloWorld"
+    "onCommand:sheller.run"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "sheller.helloWorld",
-      "title": "Hello World"
+      "command": "sheller.run",
+      "title": "sheller run"
     }]
   },
   "scripts": {
