@@ -18,7 +18,6 @@
     "shell", "bash", "scripts", "execute from editor"
   ],
   "preview": true,
-  "icon": "./img/shell-256x256.png",
   "activationEvents": [
     "onCommand:sheller.run",
     "onLanguage:shell"
