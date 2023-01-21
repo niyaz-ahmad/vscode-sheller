@@ -10,14 +10,20 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:sheller.run"
+    "onCommand:sheller.run",
+    "onLanguage:shell"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
       "command": "sheller.run",
       "title": "sheller run"
-    }]
+    }],
+    "keybindings": [{
+        "command": "sheller.run",
+        "key": "shift+enter",
+        "mac": "shift+enter"
+      }]
   },
   "scripts": {
     "lint": "eslint .",

@@ -1,5 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
+const { start } = require('repl');
 const vscode = require('vscode');
 
 // This method is called when your extension is activated
@@ -30,9 +31,7 @@ function activate(context) {
 		var lines = ""
 		
 		if(selection.isEmpty){
-			// TODO: select entire lines in range of current line
 			lines = editor.document.lineAt(editor.selection.active.line).text.trim() + "\n";
-			
 
 			// var firstLine = editor.document.lineAt(0);
 			// var lastLine = editor.document.lineAt(editor.document.lineCount - 1);
@@ -43,13 +42,30 @@ function activate(context) {
 			// editor.edit(edit => edit.replace(fullRange, newText));
 			
 		}else{
-			lines = editor.document.getText(selection).trim()+"\n";
-			// TODO: select entire lines in range of selection
+			// selection.with()
+			var arrayLines = editor.document.getText(selection).trim().split('\n') ;
+			var countLines = arrayLines.length;
+			switch ( countLines ) {
+				case 0:
+					break;
+				case 1: 
+					arrayLines[0] = editor.document.lineAt(selection.start.line).text
+					break;
+				default:
+					arrayLines[0] = editor.document.lineAt(selection.start.line).text
+					arrayLines[countLines-1] = editor.document.lineAt(selection.end.line).text;
+					break;
+			}
+			lines = arrayLines.join('\n') + "\n";
 		}
-		if(lines!==""){
+
+		if(lines!=="\n"){
 			vscode.window.activeTerminal.sendText(lines)
+			vscode.window.showInformationMessage('Executing: `'+ lines +'`');
+		}else{
+			vscode.window.showInformationMessage('Nothing to execute');
+
 		}
-		vscode.window.showInformationMessage('lines: `'+lines+'`');
 	});
 
 	context.subscriptions.push(disposable);
