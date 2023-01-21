@@ -1,14 +1,24 @@
 {
   "name": "sheller",
-  "displayName": "sheller",
-  "description": "execute current / selected lines in shell",
-  "version": "0.0.1",
+  "author": {
+    "name": "Niyaz Ahmad", 
+    "url": "https://github.com/niyaz-ahmad"
+  },
+  "license": "SEE LICENSE IN <filename>",
+  "displayName": "Sheller - Execute selected lines in shell",
+  "description": "Executes active line and selected lines in shell.",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Other"
+    "Keymaps"
   ],
+  "keywords": [
+    "shell", "bash", "scripts", "execute from editor"
+  ],
+  "preview": true,
+  "icon": "./img/shell-256x256.png",
   "activationEvents": [
     "onCommand:sheller.run",
     "onLanguage:shell"
