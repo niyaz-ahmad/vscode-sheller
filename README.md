@@ -17,7 +17,7 @@ Please open issues (here)[https://github.com/niyaz-ahmad/vscode-sheller/issues].
 ## Release Notes
 
 
-### 1.0.0
+### 0.1.0
 
 First release.
 
