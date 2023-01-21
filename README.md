@@ -12,7 +12,7 @@ VS code editor.
 
 ## Reporting Issues
 
-Please open issues (here)[https://github.com/niyaz-ahmad/vscode-sheller/issues].
+Please open issues [here](https://github.com/niyaz-ahmad/vscode-sheller/issues).
 
 ## Release Notes
 
